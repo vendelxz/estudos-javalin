@@ -13,7 +13,7 @@ public static void main(String[] args) {
     List<User> userDATABASE = new ArrayList<>();
     
     var app = Javalin.create()
-    .get("/", ctx -> ctx.result("Primeiro programa"))
+    .get("/users", ctx -> ctx.result("Primeiro programa"))
     .start(7070);
 
     //Criar um endpoint POST para criar Users
@@ -26,15 +26,24 @@ public static void main(String[] args) {
         System.out.println("User criado - Nome: "+ newUser.getNome());
         System.out.println("Email: "+ newUser.getEmail());
         System.out.println("Idade: "+ newUser.getIdade());
+        System.out.println("Ocupação: "+ newUser.getOcupacao());
 
         ctx.status(201); //Created
     });
 
     //GET para listar os Users criados
-    app.get("/users", ctx -> {
+    app.get("/users/all", ctx -> {
         ctx.json(userDATABASE);
     });
+
+    app.get("/user/{nome}", ctx ->{
+        //TODO: Fazer para retornar um usuário pelo nome...
+
+    });
+
+
 }
+
 
 }
 

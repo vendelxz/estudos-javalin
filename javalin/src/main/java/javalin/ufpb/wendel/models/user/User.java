@@ -13,4 +13,6 @@ public class User {
 
     private int idade;
 
+    private Ocupacao ocupacao;
+
 }
